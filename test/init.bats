@@ -21,7 +21,7 @@ load test_helper
   root="$(cd $BATS_TEST_DIRNAME/.. && pwd)"
   run rbenv-init - bash
   assert_success
-  assert_line "source '${root}/test/../libexec/../completions/rbenv.bash'"
+  assert_line ". '${root}/test/../libexec/../completions/rbenv.bash'"
 }
 
 @test "detect parent shell" {
@@ -47,13 +47,13 @@ OUT
   root="$(cd $BATS_TEST_DIRNAME/.. && pwd)"
   run rbenv-init - fish
   assert_success
-  assert_line "source '${root}/test/../libexec/../completions/rbenv.fish'"
+  assert_line ". '${root}/test/../libexec/../completions/rbenv.fish'"
 }
 
 @test "fish instructions" {
   run rbenv-init fish
   assert [ "$status" -eq 1 ]
-  assert_line 'status --is-interactive; and source (rbenv init -|psub)'
+  assert_line 'status --is-interactive; and . (rbenv init -|psub)'
 }
 
 @test "option to skip rehash" {
