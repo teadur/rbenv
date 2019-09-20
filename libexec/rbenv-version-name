@@ -12,7 +12,7 @@ OLDIFS="$IFS"
 IFS=$'\n' scripts=(`rbenv-hooks version-name`)
 IFS="$OLDIFS"
 for script in "${scripts[@]}"; do
-  source "$script"
+  . "$script"
 done
 
 if [ -z "$RBENV_VERSION" ] || [ "$RBENV_VERSION" = "system" ]; then
